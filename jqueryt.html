@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuerySelector</title>
+    <style>
+        .caja {
+            width: 300px;
+            height: 200px;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            margin: 20px;
+        }
+        
+        .verde {
+            width: 200px;
+            height: 100px;
+            background-color: green;
+            color: red;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Ejemplo 1</p>
+    <p>Ejemplo 2</p>
+    <p>Ejemplo 3</p>
+    <p class="btn">Ejemplo 4</p>
+    <p class="btn">Ejemplo 5</p>
+    <p class="mostrar">MOSTRAR</p>
+
+
+    <div class="caja">
+    </div>
+
+    <div class="alternar caja">
+    </div>
+
+    <h3>1</h3>
+    <h3>1</h3>
+    <h3>1</h3>
+    <h3>1</h3>
+    <h3>1</h3>
+    <h3>1</h3>
+
+    <button id="accion">CAMBIAR!!!</button>
+    <button id="accion-alternar">ALTERNAR!!!</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <script>
+        $("#accion").click(function() {
+            $("div.caja").addClass("verde");
+            $("div.caja").removeClass("caja");
+
+        });
+        $("#accion-alternar").click(function() {
+            $("div.alternar").toggleClass("caja");
+
+        });
+
+        $("p.btn").click(function() {
+            console.log($(this).text());
+            $(this).html("<b>HOLA SOY UN TEXTO NUEVO</b>");
+        });
+
+        $("p.btn").hover(function() {
+            $(this).html("<b>HOLA SOY UN TEXTO NUEVO1111</b>");
+        });
+
+        $("p:not(.mostrar)").click(function() {
+            $(this).fadeOut();
+            $(".caja").slideUp();
+            $(".caja").append($(this));
+        });
+
+        $('.mostrar').click(function() {
+            $("p").fadeIn();
+            $(".caja").slideDown();
+        });
+
+        $(".caja").click(function() {
+            $("p").css("color", "green");
+        });
+
+        $('h3').click(function() {
+            $(this).text(parseInt($(this).text()) + 1);
+        });
+    </script>
+</body>
+
+</html>
